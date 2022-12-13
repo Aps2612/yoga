@@ -21,3 +21,6 @@ The basic validations which I did in the project are as follows:-
 7. User must select a slot in order to make the payment.
 
 This project can be used in the real world if I add a payment method which would accpet the payment either from the UPI or cards.
+
+You can add the JSON Viewer pro extension to get a better view of the data.
+Link to the extension:- https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc
