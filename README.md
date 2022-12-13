@@ -1,6 +1,6 @@
 # yoga
 
-Hello, I have created this beautiful project using MERN stack as an internship assignment of flexmoney. In this web app an user can register themselves for the yoga classes.
+Hello, I have created this beautiful project using the MERN stack as an internship assignment of Flexmoney. In this web app an user can register themselves for the yoga classes.
 I enjoyed while creating this project as I learned many new things while creating this project such as form validation, connecting the frontend to the backend and deploying the web app
 online.
 
