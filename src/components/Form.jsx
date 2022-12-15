@@ -35,7 +35,7 @@ export default function Form() {
   useEffect(() => {
     if (Object.keys(error).length === 0 && submit) {
       axios
-        .post("http://localhost:5000/", user)
+        .post("https://helpful-bass-wig.cyclic.app/", user)
         .then((res) => console.log(res.data));
 
       setUser({
