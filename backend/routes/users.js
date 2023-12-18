@@ -1,33 +1,22 @@
 const router = require("express").Router();
-let User = require("../models/user.model");
+const cors = require("cors")
+const { registerUser, loginUser,getDashboard,updateSlot } = require("../controllers/users")
 
-router.route("/").get((req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json("Error: ") + err);
-});
+router.use(cors());
 
-router.route("/").post((req, res) => {
-  const name = req.body.name;
-  const age = req.body.age;
-  const gender = req.body.gender;
-  const contact = req.body.contact;
-  const fee = req.body.fee;
-  const slot = req.body.slot;
 
-  const newUser = new User({
-    name,
-    age,
-    gender,
-    contact,
-    fee,
-    slot,
-  });
+router.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
 
-  newUser
-    .save()
-    .then(() => res.json("User added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
+
+router.post('/register',registerUser)
+router.post('/',loginUser)
+router.get('/dashboard',getDashboard)
+router.put('/update', updateSlot);
+
 
 module.exports = router;

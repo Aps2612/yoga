@@ -1,25 +1,47 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+require('dotenv').config();
 
-require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const userRoutes = require('./routes/users');
+const cookieParser = require('cookie-parser')
 
+
+// express app
 const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(cors());
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+// middleware
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
+// app.use(express.urlencoded({extended:false}))
 
-const usersRouter = require("./routes/users");
-app.use("/", usersRouter);
 
-app.listen(port, () => {
-  console.log("Server is ruunig on port 5000");
-});
+// route
+app.use(cookieParser());
+app.use('/', userRoutes);
+
+
+
+// Set strictQuery to false
+mongoose.set('strictQuery', false);
+
+// connect to db
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    // listen for requests
+    app.listen(5000, () => {
+      console.log('Connected to db & listening on port 5000');
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error.message);
+  });
