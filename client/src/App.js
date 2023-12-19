@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
 import Dashboard from './Dashboard';
 
-axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.baseURL = 'https://flex-money-yoga.onrender.com'
 axios.defaults.withCredentials = true
 
 function App() {
