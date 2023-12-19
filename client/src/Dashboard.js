@@ -44,12 +44,12 @@ function Dashboard() {
 
   useEffect(() => {
     // Fetch user data when the component mounts
-    if (!user) {
+    if (!user ) {
       axios.get("/dashboard").then(({ data }) => {
         setUser(data);
       });
     }
-  }, [user, setUser]);
+  }, [user,setUser]);
 
   if (!user) {
     // Render loading state or redirect to login if user data is not available

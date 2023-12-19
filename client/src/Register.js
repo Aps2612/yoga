@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import "./Register.css"; // Import your CSS file for styling
+import styles from "./Register.module.css";  // Import your CSS file for styling
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -108,11 +108,12 @@ const Register = () => {
   };
 
   return (
-    <div className="registration-container">
+
+    <div className={styles.registration}>
       <Toaster />
       <h2>Registration Form</h2>
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Name:</label>
           <input
             type="text"
@@ -122,7 +123,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Email:</label>
           <input
             type="text"
@@ -132,7 +133,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Password:</label>
           <input
             type="password"
@@ -142,7 +143,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Age:</label>
           <input
             type="text"
@@ -152,7 +153,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Contact:</label>
           <input
             type="text"
@@ -162,7 +163,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Gender:</label>
           <select name="gender" value={user.gender} onChange={handleChange}>
             <option value="default">Select Gender</option>
@@ -171,7 +172,7 @@ const Register = () => {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <label>Slot Timing:</label>
           <select name="slot" value={user.slot} onChange={handleChange}>
           <option value="default">Select Slot</option>
@@ -182,7 +183,7 @@ const Register = () => {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className={styles.forms}>
           <button type="submit">Register and Pay 500</button>
         </div>
       </form>
@@ -190,6 +191,7 @@ const Register = () => {
         Already have an account? <Link to="/">Log In </Link>.
       </p>
     </div>
+   
   );
 };
 
